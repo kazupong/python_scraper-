@@ -18,6 +18,14 @@ response = http.request('POST', url, fields = {'prefectureLst': "01"})
 soup = BeautifulSoup(response.data,'html.parser')
 #soup = BeautifulSoup(requests.get(url, verify = False).content,'html.parser')
 
+temp = soup.find('div', class_= "paginate").find('li', class_="next")
+print(temp.prettify())
+
+next100 = 
+
+
+
+'''
 info = []
 
 
