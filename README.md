@@ -1,9 +1,9 @@
-# pythonとSeleniumとBeautifulSoup4で web scraper！
+# PythonとSeleniumとBeautifulSoup4で web scraper！
 
          Web Driver である　selenium と　BeautifulSoup4 を使った Python のウェブ　crawler と　scraper です。
 
 
-## abstract  
+## Abstract  
 
 
         国税庁の公式ウェブサイトにある、日本の企業のデータ（基本情報：企業番号、名称、所在地）を抽出します. 
@@ -12,7 +12,7 @@
         
 [国税庁]-https://www.houjin-bangou.nta.go.jp/kensaku-kekka.html
         
-### remarks 
+### Remarks 
 
         Mac用（OSX）のChrome driverを使用しております.
         download後、そのファイルを/usr/bin に移動させるとコード内でPATHの指定をしなくて済むようになる。(以下url参照ください)
