@@ -1,4 +1,4 @@
-# python_scraper
+# pythonとSeleniumとBeautifulSoup4で web scraper！
 
          Web Driver である　selenium と　BeautifulSoup4 を使った Python のウェブ　crawler と　scraper です。
 
