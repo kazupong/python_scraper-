@@ -6,7 +6,7 @@ Created on Thu Jul  5 23:44:39 2018
 @author: kazoo
 """
 
-
+from selenium import webdriver
 from bs4 import BeautifulSoup
 import urllib3
 
@@ -15,12 +15,8 @@ url = 'https://www.houjin-bangou.nta.go.jp/kensaku-kekka.html'
 http = urllib3.PoolManager()
 response = http.request('POST', url, fields = {'prefectureLst': "01"})
 
-
-
-
 soup = BeautifulSoup(response.data,'html.parser')
 #soup = BeautifulSoup(requests.get(url, verify = False).content,'html.parser')
-
 
 info = []
 
@@ -47,7 +43,7 @@ for i in tr:
      print("")
     
 
-
+'''
 
        
        
