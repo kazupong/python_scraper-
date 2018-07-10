@@ -8,18 +8,27 @@ name and address.
 author 
 @Kazuyuki Nakatsu
 
-'''
 
+further improvement:
+	time.sleep(3)のロジックではなく、loadが完了しデータが抽出され次第、ページ偏移する
+    process = WebDriverWait(driver, bufferTime).until(EC.presence_of_element_located((By.NAME, 'next'))
+
+
+
+'''
+import time
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
-
 from bs4 import BeautifulSoup
-　
 # 国税庁　全国企業基本情報の検索
+
+
+
+
 url = 'https://www.houjin-bangou.nta.go.jp/kensaku-kekka.html'
 
 
@@ -35,6 +44,7 @@ select.select_by_visible_text('北海道')
 driver.find_element_by_class_name('submitBtn01').click()
 driver.find_element_by_link_text("100件").click()
 
+'''
 #let's pass html data to bs4 from selenium 
 html = driver.page_source
 soup = BeautifulSoup(html,'html.parser')
@@ -42,50 +52,44 @@ soup = BeautifulSoup(html,'html.parser')
 #detecting table 
 table = soup.table.tbody 
 tr = table.find_all('tr')
-
-
-
-
-
-
-
+'''
 
 #detecting '次の100件' button
 #next100 = driver.find_element_by_class_name('next').click()
 
-'''
-
-
-bufferTime = 3
 isNext = True
 
 while isNext:
+
+	time.sleep(3)
 	
+	html = driver.page_source
+	soup = BeautifulSoup(html,'html.parser')
+	table = soup.table.tbody
+	tr = table.find_all('tr')
+
 	try:
-		#process = WebDriverWait(driver, bufferTime).until(EC.presence_of_element_located((By.NAME, 'next'))
-		process.find_element_by_class_name('next').click()
-		
-	except TimeoutException as e:
-		raise e
+		for i in tr:
+			th = i.find_all('th')
+			for j in th:
+
+				# store data into SQL : company number
+				print(j.get_text().strip())
+
+			td = i.find_all('td')
+			count = 0
+			for k in td:
+				if count >= 2:
+					break
+				# store data into SQL : company name and address 
+				print(k.get_text().strip())
+				count += 1
+			print("")
+
+		driver.find_element_by_link_text('次の100件').click()	
+	
+	except:
 		isNext = False
+		print("the process has finished")
 
 
-
-for i in tr:
-    
-     th = i.find('th')
-     print(th.get_text().strip())
-     
-     td = i.find_all('td')
-     count = 0
-     for j in td:
-         if count < 2:
-             temp_td = j.get_text().strip()
-             
-             print(str(temp_td))
-         count +=1       
-     print("")
-
-
-driver.find_element_by_link_text("次の100件").click()
-'''
