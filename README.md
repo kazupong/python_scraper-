@@ -18,7 +18,7 @@
         download後、そのファイルを/usr/bin に移動させるとコード内でPATHの指定をしなくて済むようになる。(以下url参照ください)
         
         
-[chromium ダウンロード]-http://chromedriver.chromium.org/downloads
+[chromium ダウンロード]-http://chromedriver.chromium.org/downloads.   
 [ドライバの保存先　説明]-http://damien.co/resources/how-to-install-chromedriver-mac-os-x-selenium-python-7406
 
 
