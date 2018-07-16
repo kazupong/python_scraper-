@@ -1,5 +1,7 @@
 '''
 
+@author Kazuyuki Nakatsu
+
 python3
 
 特定のフォルダにあるzipファイルをを解凍し展開する
@@ -16,6 +18,8 @@ import zipfile as zf
 #chrome_outフォルダ内にあるfileをリストに保存
 chrome_out = os.listdir('chrome_out')
 
+print("unzipng zip files in 'chrome_out' folder...")
+
 for ele in chrome_out:
    
    # 接続子が.zipのfileだけをターゲットにする
@@ -28,5 +32,5 @@ for ele in chrome_out:
                	   if os.path.splitext(file)[1] == '.csv':
 
                        unzip.extract(file, 'chrome_out')
-                       
+                      
 

@@ -24,7 +24,6 @@ from urllib.parse import urlparse
 url = 'https://www.houjin-bangou.nta.go.jp/kensaku-kekka.html'
 
 # Chromeドライバにダウンロード先の指定
-
 chromeOptions = webdriver.ChromeOptions()
 prefs = {'download.default_directory' : 'chrome_out'}
 chromeOptions.add_experimental_option('prefs', prefs)

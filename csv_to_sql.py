@@ -23,7 +23,7 @@ for ele in chrome_out :
 
 
 #----- test ---------------------------
-csv_file = [csv_files[0]]
+#csv_file = [csv_files[0]]
 #テストが終われば下記のfor loop を　~... in csv_files: に戻す　<-----------  <------------ <--------     test 中
 #--------------------------------------
 
@@ -39,10 +39,18 @@ cur = conn.cursor()
 #データベースへ挿入する型の宣言
 add_company_info = ("INSERT INTO companyList" "(id, name, pref, city, address, full_address)" " VALUES (%s, %s, %s, %s, %s, %s)")
 
+sum_file = len(csv_files)
+print()
+print("writing out to database...")
 
+
+count = 0
 #以下でcsvファイルから企業情報を取得、そしてSQLサーバーに送信
-for ele in csv_file:  # <---------------- <--------------------  <------------------- <------- csv_files になおす
+for ele in csv_files: 
 	 
+	 print(ele, end ='')
+	 print(' is being processed...')
+
 	 #csv_fileというリストからFile PATHを成型
 	 PATH = os.path.join('chrome_out',ele)
 
@@ -70,8 +78,10 @@ for ele in csv_file:  # <---------------- <--------------------  <--------------
 	 except Exception as a:
 	 	raise a
 	 	print(" Debug場所： ファイルを開く際 or mySQLの操作時の try/except ") 
+	 print('%i / %i files has completed...'%(count,sum_file))
+	 count += 1
 
-print("Inserting process has finished... ")
+
 
 
 
