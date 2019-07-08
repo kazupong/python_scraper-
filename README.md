@@ -1,4 +1,4 @@
-# PythonとSeleniumとBeautifulSoup4で web scraper！
+# Web-Scrapper (国税庁データ)
 
          Web Driver である　selenium と　BeautifulSoup4 を使った Python のウェブ　crawler と　scraper です。
 
